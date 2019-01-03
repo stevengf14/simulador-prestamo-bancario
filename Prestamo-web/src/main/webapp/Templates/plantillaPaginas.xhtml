@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top"></ui:insert>
+            <div id="Menu">
+                <h:form>
+                    <p:menubar>
+                        <p:menuitem value="Inicio" outcome="/Vista/Inicio" icon="ui-icon-home">
+                            <f:param name="i" value="0" />
+                        </p:menuitem>
+                         
+                            <p:submenu label="Configuración Préstamo" icon="pi pi-pencil">
+                                <p:menuitem value="Nuevo Préstamo" outcome="/Vista/nuevoProducto" icon="pi pi-angle-double-left" />
+                                <p:menuitem value="Modificar Préstamo" outcome="/Vista/modificarProducto" icon="pi pi-angle-double-right" />
+                            </p:submenu>
+                        <p:menuitem value="Nuevo Crédito" outcome="/Vista/NuevoPrestamo" icon="ui-icon-folder-open">
+                            <f:param name="i" value="2" />
+                        </p:menuitem>
+                        <p:menuitem value="Pagos" outcome="/Vista/PagosPrestamo" icon="ui-icon-check">
+                            <f:param name="i" value="3" />
+                        </p:menuitem>
+
+                        <p:menuitem value="Accrual" outcome="/Vista/detalleAccrual" icon="ui-icon-play">
+                            <f:param name="i" value="4" />
+                        </p:menuitem>
+                        <p:menuitem value="Salir" outcome="/Vista/Usuario_Login" action="#{loginBean.logout()}" icon="ui-icon-close">
+                            <f:param name="i" value="5" />
+                        </p:menuitem>
+                    </p:menubar>
+                </h:form>
+            </div>
+
+
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom"></ui:insert>
+
+        </div>
+
+    </h:body>
+
+</html>
