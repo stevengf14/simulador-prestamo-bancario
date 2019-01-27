@@ -6,6 +6,8 @@
 package ec.edu.espe.arquitectura.prestamo.Modelo;
 
 import ec.edu.espe.arquitectura.prestamo.Entidades.Cliente;
+import ec.edu.espe.arquitectura.prestamo.Entidades.Producto;
+import ec.edu.espe.arquitectura.prestamo.Entidades.TipoProducto;
 import ec.edu.espe.arquitectura.prestamo.Entidades.Usuario;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -106,15 +108,6 @@ public class Bean_NuevoPrestamo implements Bean_NuevoPrestamoLocal {
         } catch (Exception ex) {
             //num = 1;
         }
-        /*if (TipoPrestamo.equals("Quirografario")) {
-            id = 1;
-        } else if (TipoPrestamo.equals("Hipotecario")) {
-            id = 2;
-        } else if (TipoPrestamo.equals("Vehicular")) {
-            id = 3;
-        } else if (TipoPrestamo.equals("Comercial")) {
-            id = 4;
-        }*/
         return id;
     }
 
@@ -157,6 +150,23 @@ public class Bean_NuevoPrestamo implements Bean_NuevoPrestamoLocal {
         return mensaje;
     }
 
+    public Producto valoresTipoPrestamo(String tipoPrestamo)
+    {
+        int id=EncontrarIdPrestamo(tipoPrestamo);
+        Producto pro = new Producto();
+        em1.joinTransaction();
+        pro = em1.find(Producto.class, BigDecimal.valueOf(id));
+        return pro;
+    }
+    public TipoProducto valoresTipoProducto(String tipoPrestamo)
+    {
+        int id=EncontrarIdPrestamo(tipoPrestamo);
+        TipoProducto tp = new TipoProducto();
+        em1.joinTransaction();
+        tp = em1.find(TipoProducto.class, BigDecimal.valueOf(id));
+        return tp;
+    }
+    
     public boolean validarPlazo(String TipoPrestamo, int plazo) {
         int id = EncontrarIdPrestamo(TipoPrestamo);
         boolean val = false;

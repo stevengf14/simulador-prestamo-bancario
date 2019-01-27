@@ -6,6 +6,8 @@
 package ec.edu.espe.arquitectura.prestamo.Modelo;
 
 import ec.edu.espe.arquitectura.prestamo.Entidades.Cliente;
+import ec.edu.espe.arquitectura.prestamo.Entidades.Producto;
+import ec.edu.espe.arquitectura.prestamo.Entidades.TipoProducto;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -27,6 +29,10 @@ public interface Bean_NuevoPrestamoLocal {
     public boolean validarMonto(String TipoPrestamo, double monto);
 
     public String mensajeMonto(String TipoPrestamo);
+    
+    public Producto valoresTipoPrestamo(String tipoPrestamo);
+    
+    public TipoProducto valoresTipoProducto(String tipoPrestamo);
 
     public boolean validarPlazo(String TipoPrestamo, int plazo);
 
